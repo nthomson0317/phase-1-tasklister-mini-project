@@ -1,23 +1,27 @@
+//Grab stable elements and put them at the top for global scope. 
+// Items found in index.html
 
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  
-});
+const submitForm = document.getElementById("create-task-form")
+const tasks = document.getElementById("tasks")
+const textField = document.getElementById("new-task-description").innerText
 
-const tasks = document.getElementById('tasks')
 
-function addToDo(){
-  const selectForm = document.getElementById('create-task-form')
-selectForm.addEventListener('submit', (event) => {
+// EVENT LISTENERS prevent default (html elements get their event listeners in the same scope that their variables are defined in.
+submitForm.addEventListener("submit", function(event) {
   event.preventDefault()
-  addPTag(event.target.)
+  let userTypedSomething = (event.target['new-task-description'].value)
+postToDo(userTypedSomething)
+  
 
-}
+})
 
-
-function addPTag(content) {
+//FUNCTIONS
+function postToDo(content){
   let li = document.createElement('li')
+  // let button = document.createElement('button')
   li.textContent = content
   tasks.appendChild(li)
 }
 
+  
